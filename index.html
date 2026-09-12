@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AlgoArena | Algorithms, but make them visible.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="brand">
+            <div class="brand-icon">A</div>
+
+            <div>
+                <h2>AlgoArena</h2>
+                <span>Learn • Visualize • Understand</span>
+            </div>
+        </div>
+
+        <button id="themeButton" class="theme-button" title="Change theme">
+            ◐
+        </button>
+    </nav>
+
+
+    <!-- HERO -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">INTERACTIVE ALGORITHM VISUALIZER</span>
+
+                <h1>
+                    Algorithms, but
+                    <span>make them visible.</span>
+                </h1>
+
+                <p>
+                    Learn how algorithms and data structures work by watching
+                    every important step happen visually.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROL PANEL -->
+        <section class="control-card">
+
+            <div class="control-heading">
+                <div>
+                    <span class="section-label">CONTROL CENTER</span>
+                    <h2>Choose what you want to explore</h2>
+                </div>
+
+                <div class="control-note">
+                    <span>Generate</span> creates new data.
+                    <span>Start</span> runs the algorithm.
+                </div>
+            </div>
+
+
+            <div class="controls-grid">
+
+                <!-- Category -->
+                <div class="control-group">
+                    <label for="categorySelect">Category</label>
+
+                    <select id="categorySelect">
+                        <option value="sorting">Sorting</option>
+                        <option value="searching">Searching</option>
+                        <option value="stack">Stack</option>
+                        <option value="queue">Queue</option>
+                        <option value="linkedlist">Linked List</option>
+                    </select>
+                </div>
+
+
+                <!-- Algorithm -->
+                <div class="control-group">
+                    <label for="algorithmSelect">Algorithm / Structure</label>
+
+                    <select id="algorithmSelect"></select>
+                </div>
+
+
+                <!-- Array Size -->
+                <div class="control-group" id="sizeGroup">
+                    <label for="sizeRange">
+                        Data Size
+                        <strong id="sizeValue">12</strong>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="sizeRange"
+                        min="6"
+                        max="24"
+                        value="12"
+                    >
+                </div>
+
+
+                <!-- Speed -->
+                <div class="control-group" id="speedGroup">
+                    <label for="speedRange">
+                        Speed
+                        <strong id="speedValue">Medium</strong>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="speedRange"
+                        min="1"
+                        max="3"
+                        value="2"
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- Search Target -->
+            <div id="searchTargetBox" class="search-target-box hidden">
+
+                <label for="searchTarget">
+                    Search Target
+                </label>
+
+                <input
+                    type="number"
+                    id="searchTarget"
+                    placeholder="Enter a number to search"
+                >
+
+                <small>
+                    Generate data first, then enter a target and press Start.
+                </small>
+
+            </div>
+
+
+            <!-- MAIN ACTIONS -->
+            <div class="main-actions">
+
+                <button id="generateButton" class="button secondary">
+                    ↻ Generate
+                </button>
+
+                <button id="startButton" class="button primary">
+                    ▶ Start
+                </button>
+
+                <button id="pauseButton" class="button secondary">
+                    ❚❚ Pause
+                </button>
+
+                <button id="resetButton" class="button secondary">
+                    ↺ Reset
+                </button>
+
+            </div>
+
+
+            <!-- STRUCTURE CONTROLS -->
+            <div id="structureControls" class="structure-controls hidden">
+
+                <div class="structure-input">
+
+                    <input
+                        type="number"
+                        id="structureValue"
+                        placeholder="Enter value"
+                    >
+
+                </div>
+
+
+                <div id="stackButtons" class="operation-buttons hidden">
+
+                    <button id="pushButton" class="operation-button">
+                        + Push
+                    </button>
+
+                    <button id="popButton" class="operation-button">
+                        − Pop
+                    </button>
+
+                    <button id="peekStackButton" class="operation-button">
+                        ◉ Peek
+                    </button>
+
+                </div>
+
+
+                <div id="queueButtons" class="operation-buttons hidden">
+
+                    <button id="enqueueButton" class="operation-button">
+                        + Enqueue
+                    </button>
+
+                    <button id="dequeueButton" class="operation-button">
+                        − Dequeue
+                    </button>
+
+                    <button id="peekQueueButton" class="operation-button">
+                        ◉ Peek
+                    </button>
+
+                </div>
+
+
+                <div id="linkedListButtons" class="operation-buttons hidden">
+
+                    <button id="insertButton" class="operation-button">
+                        + Insert
+                    </button>
+
+                    <button id="deleteButton" class="operation-button">
+                        − Delete
+                    </button>
+
+                    <button id="searchListButton" class="operation-button">
+                        ◉ Search
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VISUALIZER -->
+        <section class="visualizer-card">
+
+            <div class="visualizer-header">
+
+                <div>
+                    <span class="section-label">VISUALIZATION</span>
+
+                    <h2 id="visualizerTitle">
+                        Bubble Sort
+                    </h2>
+
+                    <p id="visualizerDescription">
+                        Compare adjacent elements and swap them when they are
+                        in the wrong order.
+                    </p>
+                </div>
+
+
+                <div class="complexity-box">
+                    <span>Time Complexity</span>
+                    <strong id="complexityValue">O(n²)</strong>
+                </div>
+
+            </div>
+
+
+            <!-- Status -->
+            <div id="statusMessage" class="status-message">
+                Generate data and press Start.
+            </div>
+
+
+            <!-- Visualizer Stage -->
+            <div class="visualizer-stage">
+
+                <div id="arrayContainer" class="array-container"></div>
+
+                <div id="structureContainer" class="structure-container hidden"></div>
+
+            </div>
+
+
+            <!-- Legend -->
+            <div id="legend" class="legend">
+
+                <div>
+                    <span class="legend-dot normal"></span>
+                    Normal
+                </div>
+
+                <div>
+                    <span class="legend-dot comparing"></span>
+                    Comparing
+                </div>
+
+                <div>
+                    <span class="legend-dot swapping"></span>
+                    Swapping
+                </div>
+
+                <div>
+                    <span class="legend-dot sorted"></span>
+                    Sorted
+                </div>
+
+            </div>
+
+
+            <!-- Stats -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>Comparisons</span>
+                    <strong id="comparisonCount">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>Swaps</span>
+                    <strong id="swapCount">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>Steps</span>
+                    <strong id="stepCount">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFO CARDS -->
+        <section class="info-section">
+
+            <div class="info-card">
+
+                <span class="info-number">01</span>
+
+                <h3>See the logic</h3>
+
+                <p>
+                    Instead of only reading algorithm code, watch comparisons,
+                    movements and decisions happen step by step.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-number">02</span>
+
+                <h3>Understand the structure</h3>
+
+                <p>
+                    Explore how stacks, queues and linked lists actually
+                    store and manipulate data.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-number">03</span>
+
+                <h3>Learn by interaction</h3>
+
+                <p>
+                    Generate data, change values and perform operations yourself
+                    instead of only watching a static example.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEARNING NOTE -->
+        <section class="learning-note">
+
+            <div class="note-icon">✦</div>
+
+            <div>
+                <span class="section-label">LEARNING NOTE</span>
+
+                <h3>
+                    Don't memorize the movement. Understand why it happens.
+                </h3>
+
+                <p>
+                    Every visualization is designed to connect the algorithm's
+                    idea with what you see on the screen.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>AlgoArena • Built to make algorithms easier to understand.</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
