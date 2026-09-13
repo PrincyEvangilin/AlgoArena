@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AlgoArena — Algorithms, but make them visible.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+
+      <div class="brand">
+        <div class="brand-icon">A</div>
+
+        <div>
+          <div class="brand-name">AlgoArena</div>
+          <div class="brand-tagline">Learn. Visualize. Understand.</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#concepts">Learn</a>
+        <a href="#visualizer">Visualizer</a>
+        <a href="#challenge">Challenge</a>
+        <a href="#progress">Progress</a>
+      </nav>
+
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">
+        ☼
+      </button>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          INTERACTIVE DSA LEARNING
+        </div>
+
+        <h1>
+          Algorithms, but<br>
+          make them visible.
+        </h1>
+
+        <p>
+          Explore data structures and algorithms through animations,
+          step-by-step execution, challenges, and real-time insights.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn primary" id="heroStart">
+            Start Visualizing
+          </button>
+
+          <button class="btn secondary" id="heroExplore">
+            Explore Concepts
+          </button>
+        </div>
+
+      </div>
+
+
+      <div class="hero-preview">
+
+        <div class="preview-label">
+          LIVE ALGORITHM
+          <span class="live-dot"></span>
+        </div>
+
+        <div class="mini-bars">
+          <div class="mini-bar" style="height:70%">
+            <span>8</span>
+          </div>
+
+          <div class="mini-bar" style="height:42%">
+            <span>3</span>
+          </div>
+
+          <div class="mini-bar" style="height:58%">
+            <span>6</span>
+          </div>
+
+          <div class="mini-bar" style="height:28%">
+            <span>1</span>
+          </div>
+
+          <div class="mini-bar" style="height:82%">
+            <span>9</span>
+          </div>
+        </div>
+
+        <div class="preview-stats">
+          <div>
+            <span>Comparisons</span>
+            <strong id="heroComparisons">0</strong>
+          </div>
+
+          <div>
+            <span>Steps</span>
+            <strong id="heroSteps">0</strong>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONCEPTS -->
+    <section class="section concepts-section" id="concepts">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">LEARN DSA</div>
+          <h2>Choose a concept</h2>
+        </div>
+
+        <p>
+          Start with the fundamentals and gradually explore more
+          advanced concepts.
+        </p>
+
+      </div>
+
+
+      <div class="concept-grid">
+
+        <button class="concept-card" data-concept="sorting">
+          <span class="concept-icon">↕</span>
+          <strong>Sorting</strong>
+          <small>Bubble · Selection · Insertion · Merge · Quick</small>
+        </button>
+
+        <button class="concept-card" data-concept="searching">
+          <span class="concept-icon">⌕</span>
+          <strong>Searching</strong>
+          <small>Linear · Binary</small>
+        </button>
+
+        <button class="concept-card" data-concept="stack">
+          <span class="concept-icon">▤</span>
+          <strong>Stack</strong>
+          <small>Push · Pop · Peek</small>
+        </button>
+
+        <button class="concept-card" data-concept="queue">
+          <span class="concept-icon">→</span>
+          <strong>Queue</strong>
+          <small>Enqueue · Dequeue · Peek</small>
+        </button>
+
+        <button class="concept-card" data-concept="linkedlist">
+          <span class="concept-icon">●</span>
+          <strong>Linked List</strong>
+          <small>Singly · Doubly</small>
+        </button>
+
+        <button class="concept-card" data-concept="tree">
+          <span class="concept-icon">⌁</span>
+          <strong>Tree</strong>
+          <small>BST · Traversals</small>
+        </button>
+
+        <button class="concept-card" data-concept="graph">
+          <span class="concept-icon">✦</span>
+          <strong>Graph</strong>
+          <small>BFS · DFS</small>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- VISUALIZER -->
+    <section class="section visualizer-section" id="visualizer">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">VISUALIZER</div>
+          <h2 id="visualizerTitle">Sorting Visualizer</h2>
+        </div>
+
+        <p id="visualizerDescription">
+          Watch algorithms execute step-by-step and understand what
+          happens internally.
+        </p>
+
+      </div>
+
+
+      <!-- MAIN CONTROL -->
+      <div class="control-card">
+
+        <div class="control-row">
+
+          <div class="control-field">
+
+            <label>CONCEPT</label>
+
+            <select id="conceptSelect">
+              <option value="sorting">Sorting</option>
+              <option value="searching">Searching</option>
+              <option value="stack">Stack</option>
+              <option value="queue">Queue</option>
+              <option value="linkedlist">Linked List</option>
+              <option value="tree">Tree</option>
+              <option value="graph">Graph</option>
+            </select>
+
+          </div>
+
+
+          <div class="control-field" id="algorithmField">
+
+            <label>ALGORITHM</label>
+
+            <select id="algorithmSelect"></select>
+
+          </div>
+
+
+          <div class="control-field input-field" id="customInputField">
+
+            <label id="customInputLabel">CUSTOM INPUT</label>
+
+            <input
+              type="text"
+              id="customInput"
+              placeholder="8, 3, 6, 1, 9"
+            >
+
+          </div>
+
+
+          <div class="control-field target-field hidden" id="targetField">
+
+            <label>TARGET VALUE</label>
+
+            <input
+              type="number"
+              id="targetInput"
+              placeholder="Enter target"
+            >
+
+          </div>
+
+
+          <div class="control-actions">
+
+            <button class="small-btn" id="generateBtn">
+              Generate
+            </button>
+
+            <button class="small-btn primary-small" id="startBtn">
+              Start
+            </button>
+
+            <button class="small-btn" id="pauseBtn">
+              Pause
+            </button>
+
+            <button class="small-btn" id="stepBtn">
+              Step
+            </button>
+
+            <button class="small-btn" id="resetBtn">
+              Reset
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- SPEED -->
+        <div class="speed-row">
+
+          <span>Speed</span>
+
+          <input
+            type="range"
+            id="speedRange"
+            min="100"
+            max="1000"
+            value="550"
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- STRUCTURE CONTROLS -->
+      <div class="structure-controls hidden" id="structureControls">
+
+        <div class="structure-input">
+
+          <input
+            type="number"
+            id="structureInput"
+            placeholder="Enter value"
+          >
+
+        </div>
+
+
+        <div class="structure-buttons" id="stackButtons">
+
+          <button class="operation-btn" data-action="push">
+            Push
+          </button>
+
+          <button class="operation-btn" data-action="pop">
+            Pop
+          </button>
+
+          <button class="operation-btn" data-action="peek">
+            Peek
+          </button>
+
+        </div>
+
+
+        <div class="structure-buttons hidden" id="queueButtons">
+
+          <button class="operation-btn" data-action="enqueue">
+            Enqueue
+          </button>
+
+          <button class="operation-btn" data-action="dequeue">
+            Dequeue
+          </button>
+
+          <button class="operation-btn" data-action="peekQueue">
+            Peek
+          </button>
+
+        </div>
+
+
+        <div class="structure-options hidden" id="queueOptions">
+
+          <label>QUEUE TYPE</label>
+
+          <select id="queueType">
+            <option value="normal">Normal Queue</option>
+            <option value="circular">Circular Queue</option>
+          </select>
+
+        </div>
+
+
+        <div class="structure-buttons hidden" id="linkedButtons">
+
+          <button class="operation-btn" data-action="insert">
+            Insert
+          </button>
+
+          <button class="operation-btn" data-action="delete">
+            Delete
+          </button>
+
+          <button class="operation-btn" data-action="search">
+            Search
+          </button>
+
+        </div>
+
+
+        <div class="structure-options hidden" id="linkedOptions">
+
+          <label>LIST TYPE</label>
+
+          <select id="linkedType">
+            <option value="singly">Singly Linked List</option>
+            <option value="doubly">Doubly Linked List</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- VISUAL OUTPUT -->
+      <div class="visualizer-grid">
+
+        <div class="visual-card">
+
+          <div class="visual-card-header">
+
+            <div>
+              <div class="eyebrow">VISUAL OUTPUT</div>
+              <h3 id="visualOutputTitle">Array</h3>
+            </div>
+
+            <div class="speed-display">
+              Speed
+              <span id="speedValue">550</span>
+            </div>
+
+          </div>
+
+
+          <div class="visual-area" id="visualArea">
+            <!-- JS -->
+          </div>
+
+
+          <div class="operation-message" id="operationMessage">
+            Ready to visualize.
+          </div>
+
+        </div>
+
+
+        <!-- SIDE INFO -->
+        <aside class="info-card">
+
+          <div class="eyebrow">CURRENT STEP</div>
+
+          <h3 id="stepTitle">
+            Ready
+          </h3>
+
+          <p id="stepDescription">
+            Choose an algorithm and press Start.
+          </p>
+
+
+          <div class="stat-grid">
+
+            <div class="stat-box">
+              <span>Comparisons</span>
+              <strong id="comparisonStat">0</strong>
+            </div>
+
+            <div class="stat-box">
+              <span>Steps</span>
+              <strong id="stepStat">0</strong>
+            </div>
+
+            <div class="stat-box">
+              <span>Swaps</span>
+              <strong id="swapStat">0</strong>
+            </div>
+
+          </div>
+
+
+          <div class="complexity-box">
+
+            <div class="eyebrow">COMPLEXITY</div>
+
+            <div class="complexity-row">
+              <span>Best</span>
+              <strong id="bestComplexity">—</strong>
+            </div>
+
+            <div class="complexity-row">
+              <span>Average</span>
+              <strong id="averageComplexity">—</strong>
+            </div>
+
+            <div class="complexity-row">
+              <span>Worst</span>
+              <strong id="worstComplexity">—</strong>
+            </div>
+
+            <div class="complexity-row">
+              <span>Space</span>
+              <strong id="spaceComplexity">—</strong>
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <!-- HOW IT WORKS -->
+      <div class="learning-card">
+
+        <div class="learning-header">
+
+          <div>
+
+            <div class="eyebrow">HOW IT WORKS</div>
+
+            <h3 id="learningTitle">
+              Bubble Sort
+            </h3>
+
+            <p id="learningDescription">
+              Bubble Sort repeatedly compares adjacent elements and
+              swaps them when they are in the wrong order.
+            </p>
+
+          </div>
+
+          <span class="concept-badge" id="learningBadge">
+            Sorting
+          </span>
+
+        </div>
+
+
+        <div class="learning-grid">
+
+          <div>
+
+            <div class="eyebrow">
+              STEP-BY-STEP IDEA
+            </div>
+
+            <ol id="stepsList">
+            </ol>
+
+          </div>
+
+
+          <div>
+
+            <div class="eyebrow">
+              PSEUDOCODE
+            </div>
+
+            <pre id="pseudocode"></pre>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CHALLENGE -->
+    <section class="section challenge-section" id="challenge">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">CHALLENGE MODE</div>
+          <h2>Test your understanding</h2>
+        </div>
+
+        <p>
+          Don't just watch the algorithm. Predict what happens next.
+        </p>
+
+      </div>
+
+
+      <div class="challenge-card">
+
+        <div class="challenge-top">
+
+          <span id="challengeDifficulty">
+            EASY
+          </span>
+
+          <span>
+            Challenge <strong id="challengeNumber">1</strong>
+          </span>
+
+        </div>
+
+
+        <h3 id="questionText">
+          Which data structure follows LIFO?
+        </h3>
+
+
+        <div class="answer-list" id="answerList">
+        </div>
+
+
+        <div class="challenge-result" id="challengeResult"></div>
+
+
+        <button class="next-question hidden" id="nextQuestion">
+          Next Challenge →
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+    <section class="section progress-section" id="progress">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">YOUR JOURNEY</div>
+          <h2>Progress</h2>
+        </div>
+
+      </div>
+
+
+      <div class="progress-stats">
+
+        <div class="progress-box">
+          <span>Algorithms Explored</span>
+          <strong id="algorithmsExplored">0</strong>
+        </div>
+
+        <div class="progress-box">
+          <span>Challenges Solved</span>
+          <strong id="challengesSolved">0</strong>
+        </div>
+
+        <div class="progress-box">
+          <span>Current Streak</span>
+          <strong id="currentStreak">0</strong>
+        </div>
+
+        <div class="progress-box">
+          <span>XP</span>
+          <strong id="xpValue">0</strong>
+        </div>
+
+      </div>
+
+
+      <div class="overall-progress">
+
+        <div class="progress-title">
+
+          <span>Overall Progress</span>
+
+          <strong id="progressPercent">
+            0%
+          </strong>
+
+        </div>
+
+        <div class="progress-track">
+          <div
+            class="progress-fill"
+            id="progressFill"
+            style="width:0%"
+          ></div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <strong>AlgoArena</strong>
+
+    <span>
+      Algorithms, but make them visible.
+    </span>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
